@@ -29,23 +29,19 @@
     },
     "address": {
       "type": "string",
-      "required": false,
-      "minLength": 3
+      "required": false
     },
     "town": {
       "type": "string",
       "required": false,
-      "maxLength": 15,
-      "minLength": 3
+      "maxLength": 15
     },
     "postcode": {
       "type": "biginteger",
-      "required": false,
-      "max": "5"
+      "required": false
     },
     "state": {
-      "type": "string",
-      "minLength": 3
+      "type": "string"
     },
     "note": {
       "type": "text"
