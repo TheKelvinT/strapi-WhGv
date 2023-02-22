@@ -48,7 +48,7 @@
       "type": "enumeration",
       "enum": [
         "kg",
-        "nos",
+        "nos  *Est",
         "g",
         "packet"
       ]
