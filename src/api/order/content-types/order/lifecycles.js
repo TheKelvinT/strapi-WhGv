@@ -127,12 +127,11 @@ module.exports = {
 
     try {
       await strapi.plugins["email"].services.email.send({
-        to: "kelvingssb@gmail.com",
-        from: "tnchnkit@hotmail.com", // e.g. single sender verification in SendGrid
+        to: `${result.email}`,
+        from: "order@teckhongcoldstorage.com", // e.g. single sender verification in SendGrid
         subject: "[CONFIRMATION] YOUR ORDER HAS BEEN PLACED!",
         // template_id: "d-c7bab59662b540db99edd56d4cf15c45",
-        text: `Hello ${result.name}`,
-        //         html: `
+        html: `
         //         <html>
         //   <head>
         //     <style>
@@ -189,7 +188,9 @@ module.exports = {
         //     <h1>Order Confirmation</h1>
         //     <p>Dear ${result.name},</p>
         //     <p>Thank you for placing your order with us! We're excited to contact you regarding your order soon.</p>
-        //     <p>Your order number is: <span class="order-number">${result.id}</span></p>
+        //     <p>Your order number is: <span class="order-number">${
+          result.id
+        }</span></p>
         //     <p>Here's a summary of your order:</p>
         //     <table class="order-details">
         //       <thead>
@@ -202,32 +203,34 @@ module.exports = {
         //         </tr>
         //       </thead>
         //       <tbody>
-        //         ${result.ordercart.orderCart
-        //           .map(
-        //             (result) =>
-        //               `<tr><td><img src="http://localhost:1338${
-        //                 result.image
-        //               }" alt="product image" height="200" w="200"></td><td>${
-        //                 result.name
-        //               }</td><td>${result.quantity}</td><td>RM ${result.price.toFixed(
-        //                 2
-        //               )}/${result.unit}</td><td>RM ${(
-        //                 result.quantity * result.price
-        //               ).toFixed(2)}</td></tr>`
-        //           )
-        //           .join("")}
-        //       </tbody>
-        //     </table>
-        //     <p class="total">Total estimated cost:  <strong>
-        //       RM ${result.amount.toFixed(2)}
-        //     </strong></p>
-        //     <p class="contact">If you have any questions about your order, please feel free to reach out to us at teckhongcs@outlook.com</p>
-        //     <p>Thank you again for your order!</p>
-        //     <p>Best regards,</p>
-        //     <p>Teck Hong ColdStorage Team</p>
-        //   </body>
-        // </html>
-        //       `,
+                ${result.ordercart.orderCart
+                  .map(
+                    (result) =>
+                      `<tr><td><img src=${
+                        result.image
+                      } alt="product image" height="200" w="200"></td><td>${
+                        result.name
+                      }</td><td>${
+                        result.quantity
+                      }</td><td>RM ${result.price.toFixed(2)}/${
+                        result.unit
+                      }</td><td>RM ${(result.quantity * result.price).toFixed(
+                        2
+                      )}</td></tr>`
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+            <p class="total">Total estimated cost:  <strong>
+              RM ${result.amount.toFixed(2)}
+            </strong></p>
+            <p class="contact">If you have any questions about your order, please feel free to reach out to us at teckhongcs@outlook.com</p>
+            <p>Thank you again for your order!</p>
+            <p>Best regards,</p>
+            <p>Teck Hong ColdStorage Team</p>
+          </body>
+        </html>
+              `,
       });
     } catch (err) {
       console.log(err);
