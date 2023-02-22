@@ -20,7 +20,7 @@
     },
     "email": {
       "type": "email",
-      "required": true
+      "required": false
     },
     "phone": {
       "type": "biginteger",
@@ -29,18 +29,18 @@
     },
     "address": {
       "type": "string",
-      "required": true,
+      "required": false,
       "minLength": 3
     },
     "town": {
       "type": "string",
-      "required": true,
+      "required": false,
       "maxLength": 15,
       "minLength": 3
     },
     "postcode": {
       "type": "biginteger",
-      "required": true,
+      "required": false,
       "max": "5"
     },
     "state": {
