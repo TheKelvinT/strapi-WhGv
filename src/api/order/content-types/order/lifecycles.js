@@ -192,7 +192,7 @@ module.exports = {
               result.id
             }</span></p>
             <p>Here's a summary of your order:</p>
-            <table className="order-details">
+            <table class="order-details">
             <thead>
               <tr>
               <th>Image</th>
@@ -209,7 +209,7 @@ module.exports = {
                     `<tr>
                 <td><img src=${
                   result.image
-                } alt="product image" height="200" w="200"></td>
+                } alt="product image" height="150" w="150"></td>
                       <td>${result.name}</td>
                       <td>${result.quantity}</td>
                       <td>RM ${result.price.toFixed(2)}/${result.unit}</td>
