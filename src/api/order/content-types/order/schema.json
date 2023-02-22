@@ -19,8 +19,7 @@
       "minLength": 3
     },
     "email": {
-      "type": "email",
-      "required": false
+      "type": "email"
     },
     "phone": {
       "type": "biginteger",
