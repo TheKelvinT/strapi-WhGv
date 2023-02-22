@@ -124,7 +124,6 @@ module.exports = {
   async afterCreate(event) {
     // Connected to "Save" button in admin panel
     const { result } = event;
-    console.log({ result });
     console.log(result.ordercart);
     try {
       await strapi.plugins["email"].services.email.send({
@@ -204,15 +203,17 @@ module.exports = {
               </tr>
             </thead>
             <tbody>
-              ${result.ordercart.orderCart
+              ${result.ordercart
                 .map(
-                  () =>
+                  (result) =>
                     `<tr>
-                <td><img src=${image} alt="product image" height="200" w="200"></td>
-                      <td>${name}</td>
-                      <td>${quantity}</td>
-                      <td>RM ${price.toFixed(2)}/${unit}</td>
-                      <td>RM ${(quantity * price).toFixed(2)}</td>
+                <td><img src=${
+                  result.image
+                } alt="product image" height="200" w="200"></td>
+                      <td>${result.name}</td>
+                      <td>${result.quantity}</td>
+                      <td>RM ${result.price.toFixed(2)}/${result.unit}</td>
+                      <td>RM ${(result.quantity * result.price).toFixed(2)}</td>
                     </tr>`
                 )
                 .join("")}
