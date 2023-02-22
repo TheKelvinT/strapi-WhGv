@@ -124,6 +124,7 @@ module.exports = {
   async afterCreate(event) {
     // Connected to "Save" button in admin panel
     const { result } = event;
+    console.log({ result });
 
     try {
       await strapi.plugins["email"].services.email.send({
@@ -192,37 +193,11 @@ module.exports = {
               result.id
             }</span></p>
             <p>Here's a summary of your order:</p>
-            <table class="order-details">
-              <thead>
-                <tr>
-                <th>Image</th>
-                  <th>Item Name</th>
-                  <th>Quantity</th>
-                  <th>Price/Unit</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${result.ordercart.orderCart
-                  .map(
-                    (result) =>
-                      `<tr>
-                        <td>
-                        <img src=${
-                          result.image
-                        } alt="product image" height="200" w="200">
-                        </td>
-                        <td>${result.name}</td>
-                        <td>${result.quantity}</td>
-                        <td>RM ${result.price.toFixed(2)}/${result.unit}</td>
-                        <td>RM ${(result.quantity * result.price).toFixed(
-                          2
-                        )}</td>
-                      </tr>`
-                  )
-                  .join("")}
-              </tbody>
-            </table>
+              ${result.image}
+              ${result.name}
+              ${result.quantity}
+              ${result.price}
+              ${result.unit}
             <p class="total">Total estimated cost:  <strong>
               RM ${result.amount.toFixed(2)}
             </strong></p>
