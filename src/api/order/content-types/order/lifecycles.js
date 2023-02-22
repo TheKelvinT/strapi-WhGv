@@ -129,6 +129,7 @@ module.exports = {
       await strapi.plugins["email"].services.email.send({
         to: `${result.email}`,
         from: "order@teckhongcoldstorage.com", // e.g. single sender verification in SendGrid
+        cc: "order@teckhongcoldstorage.com",
         subject: "[CONFIRMATION] YOUR ORDER HAS BEEN PLACED!",
         // template_id: "d-c7bab59662b540db99edd56d4cf15c45",
         html: `
